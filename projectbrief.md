@@ -30,9 +30,11 @@ https://www.kaggle.com/unsdsn/world-happiness?fbclid=IwAR1ihEwi1DqBwvlW7heKa5PKX
 
 
 #### 4.0 Information Visualizations
-Geographical Heat Map - Compare happiness scores globally across tested countries
+![Geographical heatmap example based on Natural Amenities Scale](images/heatmap_example.jpeg)   
+>*Figure 1* This graph shows the beauty of an area based on the Natural Amenities scale. We plan to use ours to show reported happiness in different countries around the globe.  
 
-Scatterplot - Defines most important variables against overall happiness score
+![Scatterplot with regression showing relationship between height and weight](/images/scatterplot_example.png)
+>*Figure 2* This scatterplot shows the relationship betweens participants' height and weight. We plan to use scatterplot(s) to depict the relationship between variables like life expectancy and freedom, and overall happiness.
 
 #### 5.0 Team Coordinations
 **Meeting Time:** Tuesday 2:30 - 4:30PM, will be our usual meeting time for the week
