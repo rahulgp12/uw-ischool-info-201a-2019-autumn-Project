@@ -1,7 +1,7 @@
 ### Appendix: P1: Report Outline
-**Project Title**  
-Project Codename  
-Team Members
+**What Sparks Joy: Examining the Factors Behind Global Happiness**  
+Codename: Utopia  
+Rahul Prasad, Welson Nguyen, Geo Cabatingan, Pow Areepipatkul
 
 #### 1.0 Introduction  
 ##### 1.1 Problem Situation
@@ -34,7 +34,7 @@ https://www.kaggle.com/unsdsn/world-happiness?fbclid=IwAR1ihEwi1DqBwvlW7heKa5PKX
 >*Figure 1* This graph shows the beauty of an area based on the Natural Amenities scale. We plan to use ours to show reported happiness in different countries around the globe.  
 
 ![Scatterplot with regression showing relationship between height and weight](/images/scatterplot_example.png)
->*Figure 2* This scatterplot shows the relationship betweens participants' height and weight. We plan to use scatterplot(s) to depict the relationship between variables like life expectancy and freedom, and overall happiness.
+>*Figure 2* This scatterplot shows the relationship betweens participants' height and weight. We plan to use scatterplot(s) to depict the relationship between variables like life expectancy and freedom, and overall happiness.p
 
 #### 5.0 Team Coordinations
 **Meeting Time:** Tuesday 2:30 - 4:30PM, will be our usual meeting time for the week
