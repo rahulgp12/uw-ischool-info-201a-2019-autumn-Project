@@ -28,7 +28,11 @@ ggplot(world_shape) +
   ) +
   coord_map() +
   scale_fill_continuous(low = "#132B43", high = "Red") +
+<<<<<<< HEAD
   labs(fill = "Happiness Score")
 
 
+=======
+  labs(fill = "Happiness Score (0-5)")
+>>>>>>> 132fa2b973ba3937b0b66cdde6c634bec42ab388
 
