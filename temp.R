@@ -28,4 +28,6 @@ ggplot(world_shape) +
   ) +
   coord_map() +
   scale_fill_continuous(low = "#132B43", high = "Red") +
-  labs(fill = "Happiness Score (0-5)")
+  labs(fill = "Happiness Score (0-10)") +
+  xlab("Longitude") +
+  ylab("Latitude")
