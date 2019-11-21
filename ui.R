@@ -2,6 +2,8 @@
 library("shiny")
 
 data_2017 <- read.csv('data/2017.csv', stringsAsFactors = FALSE)
+desired_columns <- select(data_2017, Economy..GDP.per.Capita., Family, Health..Life.Expectancy.,
+         Freedom, Generosity, Trust..Government.Corruption.)
 
 shinyServer(
   pageWithSidebar(
@@ -11,7 +13,7 @@ shinyServer(
     # column names and put it down here.
     sidebarPanel(
       selectInput("Feature", "Please Select Feature to Compare",
-                  choices = colnames(data_2017)),
+                  choices = colnames(desired_columns)),
     ),
     
     mainPanel(
