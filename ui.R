@@ -1,12 +1,21 @@
-
+# Used libraries, don't forget to install packages on each local
 library("shiny")
 library("shinythemes")
 library("dplyr")
 
+# 2017 Global Happiness data frame we're working with
 data_2017 <- read.csv('data/2017.csv', stringsAsFactors = FALSE)
-desired_columns <- select(data_2017, Economy..GDP.per.Capita., Family, Health..Life.Expectancy.,
-                          Freedom, Generosity, Trust..Government.Corruption.)
 
+# Renamed column names
+desired_columns <- data_2017 %>%
+  select(Economy..GDP.per.Capita., Family, Health..Life.Expectancy.,
+           Freedom, Generosity, Trust..Government.Corruption.) %>%
+  rename(CapitaGDP = Economy..GDP.per.Capita., LifeExpectancy = Health..Life.Expectancy.,
+         Government = Trust..Government.Corruption.) %>%
+  select(CapitaGDP, Family, LifeExpectancy, Freedom, Generosity, Government)
+  
+
+# Shiny UI
 shinyUI(navbarPage(title = "Global Happiness Report",
                    theme = shinytheme("darkly"),
                    tabPanel("Scatterplot 1",

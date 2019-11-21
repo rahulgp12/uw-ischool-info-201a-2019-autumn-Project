@@ -1,10 +1,15 @@
-# Hey Geo, I couldn't quite figure out how to get the CSV data to save and
-# display on the Shiny App. But for right now this is a basic UI we can
-# use. Since you have some experience, I could use some help here.
+# Used libraries, don't forget to install packages on local
 library(ggplot2)
 
-# Feel free to change this when working
+# 2017 Global Happiness data frame we're working with
 data_2017 <- read.csv('data/2017.csv', stringsAsFactors = FALSE)
+
+# Renamed column names
+data_2017 <- data_2017 %>%
+  select(Economy..GDP.per.Capita., Family, Health..Life.Expectancy.,
+         Freedom, Generosity, Trust..Government.Corruption., Happiness.Score) %>%
+  rename(CapitaGDP = Economy..GDP.per.Capita., LifeExpectancy = Health..Life.Expectancy.,
+         Government = Trust..Government.Corruption.)
 
 
 shinyServer(
