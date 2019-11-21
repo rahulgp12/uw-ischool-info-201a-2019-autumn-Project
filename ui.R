@@ -64,7 +64,9 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                             shinyServer(
                               fluidPage(
                                 headerPanel("Link to Wiki"),
-                                uiOutput("wikiLink")
+                                mainPanel("View our Techinal Report Here
+                                          : https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project")
+                                #uiOutput("wikiLink")
                               )
                             )
                    )

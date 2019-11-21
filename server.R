@@ -20,15 +20,14 @@ shinyServer(
       
     })
   }
-)
 
-shinyServer(
-  function(input, output) {
-    wikiURL <- a("Link to Wiki", href = 
-                "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project/wiki/Technical-Report")
-    output$wikiLink <- renderUI({
-      tagList("Read our Technical Report Here:", wikiURL)
-    })
-  }
+# this code is bugged but will be used in the future  
+#  function(input, output, session) {
+#    wikiURL <- a("Link to Wiki", href = 
+#                "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project/wiki/Technical-Report")
+#    output$wikiLink <- renderUI({
+#      tagList("Read our Technical Report Here:", wikiURL)
+#    })
+#  }
 )
 
