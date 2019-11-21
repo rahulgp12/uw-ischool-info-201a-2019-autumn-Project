@@ -59,5 +59,13 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                                           country.")
                               )
                             )
+                   ),
+                   tabPanel("Link to Wiki",
+                            shinyServer(
+                              fluidPage(
+                                headerPanel("Link to Wiki"),
+                                uiOutput("wikiLink")
+                              )
+                            )
                    )
 ))

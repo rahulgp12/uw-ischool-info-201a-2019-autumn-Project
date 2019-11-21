@@ -9,8 +9,6 @@ data_2017 <- read.csv('data/2017.csv', stringsAsFactors = FALSE)
 
 shinyServer(
   function(input, output, session) {
-    
-    
     output$myPlot <- renderPlot({
       feature_type <- input$Feature
       
@@ -23,3 +21,14 @@ shinyServer(
     })
   }
 )
+
+shinyServer(
+  function(input, output) {
+    wikiURL <- a("Link to Wiki", href = 
+                "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project/wiki/Technical-Report")
+    output$wikiLink <- renderUI({
+      tagList("Read our Technical Report Here:", wikiURL)
+    })
+  }
+)
+
