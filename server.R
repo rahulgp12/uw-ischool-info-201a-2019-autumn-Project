@@ -4,7 +4,6 @@
 library(ggplot2)
 
 # Feel free to change this when working
-setwd('~/Projects/uw-ischool-info-201a-2019-autumn-Project')
 data_2017 <- read.csv('data/2017.csv', stringsAsFactors = FALSE)
 
 
@@ -16,7 +15,7 @@ shinyServer(
       feature_type <- input$Feature
       
       # Interactive graph
-      ggplot(data_2017, aes(x = feature_type, y = Happiness.Score)) +
+      ggplot(data_2017, aes_string(x = feature_type, y = "Happiness.Score")) +
         geom_point() +
         geom_smooth(method = "lm", se = FALSE) +
         ggtitle(paste("Comparing Effect of", feature_type, "on Happiness Score"))

@@ -1,7 +1,7 @@
 
 library("shiny")
 
-
+data_2017 <- read.csv('data/2017.csv', stringsAsFactors = FALSE)
 
 shinyServer(
   pageWithSidebar(
@@ -11,7 +11,7 @@ shinyServer(
     # column names and put it down here.
     sidebarPanel(
       selectInput("Feature", "Please Select Feature to Compare",
-                  choices = c("Family", "Freedom")),
+                  choices = colnames(data_2017)),
     ),
     
     mainPanel(
