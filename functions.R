@@ -116,17 +116,19 @@ count_2015 <- unlist(count_2015[1], use.names = FALSE)
 
 
 
-get_geo_lat <- function(country){
+get_geo_lat <- function(country1){
   df <- countries_geo
-  df <- filter(df, name == country)
-  df <- df[[1,2]]
-  return((df))
+  df_1 <- df %>%
+    filter(name == country1)
+  df_1 <- df_1[[1, 2]]
+  return((df_1))
 }
-get_geo_lon <- function(country){
+get_geo_lon <- function(country1){
   df <- countries_geo
-  df <- filter(df, name == country)
-  df <- df[[1,3]]
-  return((df))
+  df_1 <- df %>%
+    filter(name == country1)
+  df_1 <- df_1[[1, 3]]
+  return((df_1))
 }
 test_lat <- get_geo_lat("Somaliland Region")
 test_lon <- get_geo_lon("United States")
