@@ -126,3 +126,4 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                             )
                    )
 ))
+
