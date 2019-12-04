@@ -1,27 +1,39 @@
+# Please install (PLEASE UNCOMMENT AND INSTALL)
+# install.packages("maps")
+# install.packages("mapproj")
+
+# Please setwd to your own working directory!
+# setwd()
+
 # Used libraries, don't forget to install packages on local
 library(ggplot2)
+library(dplyr)
+library("maps")
 
-# 2017 Global Happiness data frame we're working with
-data_2017 <- read.csv('data/2017.csv', stringsAsFactors = FALSE)
-
-# Renamed column names
-data_2017 <- data_2017 %>%
-  select(Economy..GDP.per.Capita., Family, Health..Life.Expectancy.,
-         Freedom, Generosity, Trust..Government.Corruption., Happiness.Score) %>%
-  rename(CapitaGDP = Economy..GDP.per.Capita., LifeExpectancy = Health..Life.Expectancy.,
-         Government = Trust..Government.Corruption.)
+source("functions.R")
 
 
 shinyServer(
   function(input, output, session) {
+    
+    # Scatter plot for first tab, happiness vs feature
     output$myPlot <- renderPlot({
-      feature_type <- input$Feature
+      feature_type <- data_2017 %>% select(input$Feature)
+      feature_type_data <- as.numeric(unlist(feature_type))
       
-      # Interactive graph
-      ggplot(data_2017, aes_string(x = feature_type, y = "Happiness.Score")) +
-        geom_point() +
-        geom_smooth(method = "lm", se = FALSE) +
-        ggtitle(paste("Comparing Effect of", feature_type, "on Happiness Score"))
+      linear_fit_2017 <- lm(data_2017$Happiness.Score ~ feature_type_data,
+                        data = data_2017)
+      linear_plot <- ggplotRegression(linear_fit_2017, input$Feature)
+      linear_plot
+    })
+    
+    output$myHeatmap <- renderPlot({
+      year <- input$Year
+      
+      # Functions to call dataset, tidy it up, and generate heatmap
+      mydata <- year_data(year)
+      mydata <- tidy_data(mydata)
+      heat_map(mydata)
       
     })
   }
