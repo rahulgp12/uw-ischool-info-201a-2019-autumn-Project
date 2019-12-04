@@ -27,6 +27,22 @@ shinyServer(
       linear_plot
     })
     
+    #Scatterplot for second tab, happiness vs feature by region
+    # output$regionalPlot <- renderPlot({
+    #   feature_type <- data_2017 %>% select(input$Feature)
+    #   feature_type_data <- as.numeric(unlist(feature_type))
+    #   
+    #   linear_fit_2017 <- lm(data_2017$Happiness.Score ~ feature_type_data,
+    #                         data = data_2017)
+    #   linear_plot <- ggplotRegression(linear_fit_2017, input$Feature)
+    #   linear_plot
+    #})
+    
+    
+    
+    
+    
+    
     output$myHeatmap <- renderPlot({
       year <- input$Year
       
@@ -115,3 +131,4 @@ shinyServer(
 #    })
 #  }
 )
+

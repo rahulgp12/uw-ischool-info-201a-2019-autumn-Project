@@ -29,6 +29,22 @@ ggplotRegression <- function(fit, xlabel) {
   
 }
 
+# Linear Regression plot for happiness by region
+# countries <- map_data("world")
+# datacountries <- data_2017_4.Country
+# names(datacountries) <- tolower(names(datacountries))
+# datacountries$region <- tolower(rownames(data_2017_4.Country))
+# choro <- merge(countries, datacountries, sort = FALSE, by = "region")
+# choro <- choro[order(choro$order),]
+
+# ggplotTab <- function(fit, xlabel) {
+#   ggplot(data_2017, aes(x = choro, y = data_2017.Happiness.Score) + 
+#     geom_point() +
+#     stat_smooth(method = "lm", col = "red") +
+#     labs(x = xlabel, y = "Happiness Score"))
+#}
+#ggplot(data_2017, aes(x = xlabel, y = "Happiness Score")) +
+#  geom_point()
 
 # Writing a function to call the desired data set based on selected year 
 year_data <- function(year) {
@@ -194,5 +210,6 @@ category_list <- function(year){
   }
   return(x)
 }
+
 
 

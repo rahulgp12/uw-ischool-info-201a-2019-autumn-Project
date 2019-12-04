@@ -71,15 +71,41 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                    ),
                    
                    # Tab 2
-                   tabPanel("Scatterplot 2",
+                   tabPanel("Happiness by Region",
                             shinyServer(
                               pageWithSidebar(
                                 headerPanel("Regional Influence on Global Happiness"),
-                                sidebarPanel("Will contain interactive options 
-                                             based on country's region"
+                                sidebarPanel(
+                                  selectInput("Feature", "Please Select Feature to Compare",
+                                              choices = colnames(desired_columns)),
                                 ),
-                                mainPanel("Will show the scatterplot with interactive 
-                                          x-axis and happiness scores on y-axis")
+                                mainPanel(
+                                  plotOutput("regionalPlot"),
+                                  h3("What We Learned"),
+                                  p("In plotting the happiness scores of all the countries in 2017, we noticed
+                                    that regions definitely play a part in the country's happiness score overall.
+                                    As we can see, the happiest regions on average were those from the North American
+                                    and European regions, with countries like Norway, and Canada leading
+                                    the rankings for their respective regions. Sadly, we also found that the unhappiest
+                                    regions tended to lie in the Middle East and South America, likely resulting from
+                                    the significant poverty and war on terrorism these regions deal with, as these regions
+                                    on average contained significantly lower Health Life Expectancy scores and Freedom
+                                    scores as well."),
+                                  p("It was important to note that there were specific factors that carried these
+                                    specific regions' happiness scores than others. For example, in North America
+                                    factors such as Generosity and EconomyGDP per Capita for the US and Canada 
+                                    were on average higher than countries from other Regions like Asia, South America
+                                    and Africa which could be due in part to the specific culture and economic
+                                    standing entailed with these regions as opposed to others with a possibly smaller
+                                    product markets to support them."),
+                                  p("Lastly, it is crucial in understanding the data to recognize the amount of countries
+                                    residing in each specific region. Some regions such as North America and Australia  
+                                    contain a significantly less amount of countries and with that poll data, 
+                                    and so drastically different numbers for these regions would tip them above or lower
+                                    than more populated regions. It was also interesting to see the regional distribution
+                                    of data that pertained to regional happiness, with some regions having lower numbers
+                                    all around for certain factors such as Trust in Government or Life Expectancy")
+                                  )
                               )
                             )
                    ),
@@ -131,7 +157,7 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                    ),
                    
                    # Tab 4
-                   tabPanel("Dot-Distribution Map",
+                   tabPanel("Top Ten Map",
                             shinyServer(
                               pageWithSidebar(
                                 headerPanel("Top Ten"),
@@ -188,4 +214,5 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                             )
                    )
 ))
+
 
