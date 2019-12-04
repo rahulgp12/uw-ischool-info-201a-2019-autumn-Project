@@ -213,5 +213,17 @@ category_list <- function(year){
   return(x)
 }
 
+# Writes function that adds regions to the selected data set
+add_regions <- function(mydata) {
+  world_shape <- map_data("world") %>%      # Creates data table holding all countries
+    rename(Country = region) 
+  region_data <- mydata %>%
+    left_join(world_shape, by = "Country") %>%
+    select(-long, -lat, -order, -subregion, -group)
+  region_data <- distinct(region_data)
+  return(region_data)
+}
+
+
 
 
