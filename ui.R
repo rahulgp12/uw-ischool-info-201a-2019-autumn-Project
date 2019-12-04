@@ -134,14 +134,45 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                    tabPanel("Dot-Distribution Map",
                             shinyServer(
                               pageWithSidebar(
-                                headerPanel("Country Superlatives"),
-                                sidebarPanel("Will allow user to select which superlative
-                                             they want to test/observe"),
-                                mainPanel("Will contain a world map that displays markers
-                                          labeling the top ten (blank) countries where blank
-                                          is selected by the user in the sidebar. Clicking
-                                          on a dot will bring up additional info about the
-                                          country.")
+                                headerPanel("Top Ten"),
+                                sidebarPanel(
+                                  selectInput("t4_year",
+                                              label = h3("Select Year"),
+                                              choices = year_list,
+                                              selected = "2017"
+                                  ),
+                                  selectInput("t4_category",
+                                              label = h3("Select Category"),
+                                              choices = category_list("2017"),
+                                              selected = "")),
+                                mainPanel(leafletOutput("map"),
+                                          h3("Analysis"),
+                                          p("Applying the categorical observation of each country into
+                                            a geographical map, gave a sense of the strength of each 
+                                            attribute dependent upon the area. In 2017, the attribute 
+                                            generosity for example, was predominantly found within Asian 
+                                            and Oceanic countries. When we compare these results to the 
+                                            overall highest happiness ranked countries, the top ten has 
+                                            little relations with the generosity attribute. The top ten happy 
+                                            countries do however show a stronger relationship with the top ten 
+                                            countries with the attribute freedom. These type of observation
+                                            helps find trends that corelate between the attribute and its 
+                                            geographic location. "),
+                                          p("One of the biggest observations we recorded, was that most countries
+                                            that are ranked top in happiness was found within the Europe.
+                                            When observing GDP, the Middle East had a strong presence within the
+                                            top ten ranks. These types of observation are fascinating as we were
+                                            able to discover a country such as the United Arab Emirates (UAE), to 
+                                            find GDP a strong factor in happiness. Understandable as the UAE holds 
+                                            the second largest GDP in the Arab countries."),
+                                          p("When we compare results in factors of years, it becomes difficult 
+                                            to see any changes between time. Although we only observed through
+                                            a span of three year, there was little to no change in the geographical
+                                            movement of each category. We do however noticed pockets of countries.
+                                            For Example, when observing dystopia, through all three years, many of
+                                            the countries remained within Central America. These 'pockets' of countries
+                                            are found easily throughout all the categories, and it becomes surprising that
+                                            they tend to remain within their designated area. "))
                               )
                             )
                    ),

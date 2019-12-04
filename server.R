@@ -80,6 +80,30 @@ shinyServer(
               5. Rwanda (3.471)")
       }
     })
+    observe({
+      x <- input$t4_year
+      updateSelectInput(session, "t4_category",
+                        choices = category_list(input$t4_year)
+      )
+    })
+    output$map <- renderLeaflet({
+      x <- input$t4_year
+      y <- input$t4_category
+      df <- top_ten(x, y)
+      leaflet(data = df) %>%
+        addProviderTiles("CartoDB.Positron") %>%
+        setView(lng = 19.087508, lat = 12.127659, zoom = 1.3055) %>%
+        addMarkers(
+          lat = ~latitude,
+          lng = ~longitude,
+          popup = paste("Country:", df$Country, "<br>",
+                        "Chosen Category:", y, "<br>",
+                        "Rank:", df$Rank, "<br>",
+                        "Happiness Rank:", df$Happiness.Rank, "<br>"
+                        
+          )
+        )
+    })
   }
 
 # this code is bugged but will be used in the future  
