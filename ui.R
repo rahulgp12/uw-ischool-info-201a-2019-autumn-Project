@@ -24,7 +24,7 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                    theme = shinytheme("darkly"),
                    
                    # First tab
-                   tabPanel("Scatterplot 1",
+                   tabPanel("Global Happiness",
                             shinyServer(
                               pageWithSidebar(
                                 headerPanel("Influential Factors on Global Happiness"),
@@ -85,16 +85,46 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                    ),
                    
                    # Tab 3
-                   tabPanel("Heatmap",
+                   tabPanel("Happiness Over Time",
                             shinyServer(
                               pageWithSidebar(
                                 headerPanel("Global Happiness Heatmap"),
                                 sidebarPanel(
                                   selectInput("Year", "Please Select a Year",
                                               choices = c("2015", "2016", "2017")),
+                                  htmlOutput("heatmapText"),
                                 ),
                                 mainPanel(
-                                  plotOutput("myHeatmap")
+                                  plotOutput("myHeatmap"),
+                                  h3("What We Learned"),
+                                  p("By plotting the happiness scores of over 150 countries over the span
+                                    of three years, 2015-2017, we were able to quickly visualize patterns
+                                    that appeared in the data. Almost immediately, it became apparent that
+                                    the happiest nations tended to reside in North America and Western Europe,
+                                    while the unhappiest nations were typically found in Afica and Southeast
+                                    Asia. This is consistent with the results from our influential factors 
+                                    scatterplots, as countries in North America and Western Europe tend to 
+                                    have much higher GDP per capita and Life Expectancies then their African
+                                    and Southeast Asian counterparts."),
+                                  p("While we were only working with a 3-year sample size, we were still
+                                    surprised by the lack of change in happiness scores over time. Looking
+                                    at the different heatmaps, it can be difficult to notice change on a year-
+                                    to-year basis, which we attributed to the fact that societies rarely
+                                    experience large shifts in collective happiness without a 'trigger' of some
+                                    sort. One interesting fact we discovered is that after the controversial
+                                    election of President Trump in 2016, the United States' happiness score fell",
+                                    strong("below"), "7.00 for the first time in the three year span we measured."),
+                                  p("A final takeaway when looking at happiness scores over time: pay attention to
+                                    the Scandinavian countries. Denmark, Switzerland, Iceland, and Norway all
+                                    ranked in the top 5 for overall happiness in every year we measured. Finland was
+                                    also ranked in the top 5 in two of the three years we measured. In fact, the only
+                                    non-Scandinavian country to crack the top 5 was Canada, in 2015. While our study
+                                    does not allow us to make causation-based claims, all 5 countries are run similarly
+                                    with regards to economic structure, and government welfare policies. The top 5
+                                    unhappiest countries list was a little more volatile, as only Burundi and Syria
+                                    were ranked all three years. Syria's place can most likely be attributed to the
+                                    ongoing civil war currently afflicting the nation, while Burundi is widely
+                                    considered unsafe due a rise in terrorism and violent crime.")
                                 )
                               )
                             )
@@ -115,12 +145,13 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                               )
                             )
                    ),
-                   tabPanel("Link to Wiki",
+                   tabPanel("Learn More",
                             shinyServer(
                               fluidPage(
-                                headerPanel("Link to Wiki"),
-                                mainPanel("View our Techinal Report Here
-                                          : https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project")
+                                headerPanel("Learn More"),
+                                mainPanel("View our Technical Report Here:", 
+                                          a("Link to Wiki"),
+                                          href = "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project")
                                 #uiOutput("wikiLink")
                               )
                             )

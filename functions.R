@@ -34,7 +34,9 @@ year_data <- function(year) {
   myyear <- paste0("data/", year, ".csv", sep = "")
   read.csv(myyear, stringsAsFactors = FALSE)
 }
-
+mydata <- year_data("2015")
+mydata2 <- year_data("2016")
+mydata3 <- year_data("2017")
 
 # Writing a function to fix naming differences between happiness scores file and map
 tidy_data <- function(data) {
@@ -74,5 +76,7 @@ heat_map <- function(mydata) {
     ) +
     coord_map() +
     scale_fill_continuous(low = "#132B43", high = "Red") +
-    labs(fill = "Happiness Score (0-10)")  + coord_map(xlim=c(-180,180))
+    labs(fill = "Happiness Score (0-10)")  + coord_map(xlim=c(-180,180)) +
+    xlab("Longitude") +
+    ylab("Latitude")
 }

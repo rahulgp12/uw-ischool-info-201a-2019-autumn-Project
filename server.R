@@ -34,7 +34,51 @@ shinyServer(
       mydata <- year_data(year)
       mydata <- tidy_data(mydata)
       heat_map(mydata)
-      
+    })
+    
+    output$heatmapText <- renderText({
+      year <- input$Year
+      year <- as.character(year)
+      if(year == "2015") {
+        paste("<h3> Top Five Happiest Countries: </h3> <br/> 
+              1. Switzerland (7.587) <br/>
+              2. Iceland (7.561) <br/>
+              3. Denmark (7.527) <br/>
+              4. Norway (7.522) <br/>
+              5. Canada (7.427) <br/>
+              <h3> Top Five Unhappiest Countries: </h3> <br/>
+              1. Togo (2.839) <br/>
+              2. Burundi (2.905) <br/>
+              3. Syria (3.006) <br/>
+              4. Benin (3.340) <br/>
+              5. Rwanda (3.465)") 
+      } else if(year == "2016") {
+        paste("<h3> Top Five Happiest Countries: </h3> <br/>
+              1. Denmark (7.526) <br/>
+              2. Switzerland (7.509) <br/>
+              3. Iceland (7.501) <br/>
+              4. Norway (7.498) <br/>
+              5. Finland (7.413) <br/>
+              <h3> Top Five Unhappiest Countries </h3> <br/>
+              1. Burundi (2.905) <br/>
+              2. Syria (3.069) <br/>
+              3. Togo (3.303) <br/>
+              4. Afghanistan (3.360) <br/>
+              5. Benin (3.484)")
+      } else {
+        paste("<h3> Top Five Happiest Countries: </h3> <br/>
+              1. Norway (7.537) <br/>
+              2. Denmark (7.522) <br/>
+              3. Iceland (7.504) <br/>
+              4. Switzerland (7.494) <br/>
+              5. Finland (7.469) <br/>
+              <h3> Top Five Unhappiest Countries </h3> <br/>
+              1. Central African Republic (2.693) <br/>
+              2. Burundi (2.905) <br/>
+              3. Tanzania (3.349) <br/>
+              4. Syria (3.462) <br/>
+              5. Rwanda (3.471)")
+      }
     })
   }
 
