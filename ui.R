@@ -16,7 +16,7 @@ source("functions.R")
 # Renamed column names
 desired_columns <- data_2017 %>%
   select(CapitaGDP, Family, LifeExpectancy, Freedom, Generosity, Government)
-  
+
 
 
 # Shiny UI
@@ -75,55 +75,56 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                             shinyServer(
                               pageWithSidebar(
                                 headerPanel("Regional Influence on Global Happiness"),
-                                sidebarPanel(
-                                  selectInput("Feature", "Please Select Feature to Compare",
-                                              choices = colnames(desired_columns)),
+                                sidebarPanel(selectInput("Feature_2", "Please Select Feature to Compare",
+                                                         choices = desired_columns2
                                 ),
-                                mainPanel(
-                                  plotOutput("regionalPlot"),
-                                  h3("What We Learned"),
-                                  p("In plotting the happiness scores of all the countries in 2017, we noticed
-                                    that regions definitely play a part in the country's happiness score overall.
-                                    As we can see, the happiest regions on average were those from the North American
-                                    and European regions, with countries like Norway, and Canada leading
-                                    the rankings for their respective regions. Sadly, we also found that the unhappiest
-                                    regions tended to lie in the Middle East and South America, likely resulting from
-                                    the significant poverty and war on terrorism these regions deal with, as these regions
-                                    on average contained significantly lower Health Life Expectancy scores and Freedom
-                                    scores as well."),
-                                  p("It was important to note that there were specific factors that carried these
-                                    specific regions' happiness scores than others. For example, in North America
-                                    factors such as Generosity and EconomyGDP per Capita for the US and Canada 
-                                    were on average higher than countries from other Regions like Asia, South America
-                                    and Africa which could be due in part to the specific culture and economic
-                                    standing entailed with these regions as opposed to others with a possibly smaller
-                                    product markets to support them."),
-                                  p("Lastly, it is crucial in understanding the data to recognize the amount of countries
-                                    residing in each specific region. Some regions such as North America and Australia  
-                                    contain a significantly less amount of countries and with that poll data, 
-                                    and so drastically different numbers for these regions would tip them above or lower
-                                    than more populated regions. It was also interesting to see the regional distribution
-                                    of data that pertained to regional happiness, with some regions having lower numbers
-                                    all around for certain factors such as Trust in Government or Life Expectancy")
-                                  )
-                              )
-                            )
-                   ),
-                   
-                   # Tab 3
-                   tabPanel("Happiness Over Time",
-                            shinyServer(
-                              pageWithSidebar(
-                                headerPanel("Global Happiness Heatmap"),
-                                sidebarPanel(
-                                  selectInput("Year", "Please Select a Year",
-                                              choices = c("2015", "2016", "2017")),
-                                  htmlOutput("heatmapText"),
+                                selectInput("region_list", "Please Select Region",
+                                            choices = region
+                                )
                                 ),
-                                mainPanel(
-                                  plotOutput("myHeatmap"),
-                                  h3("What We Learned"),
-                                  p("By plotting the happiness scores of over 150 countries over the span
+                                
+                                mainPanel( plotOutput("regionalPlot"),
+                                           h3("What We Learned"),
+                                           p("In plotting the happiness scores of all the countries in 2017, we noticed
+                                  that regions definitely play a part in the country's happiness score overall.
+                                  As we can see, the happiest regions on average were those from the North American
+                                  and European regions, with countries like Norway, and Canada leading
+                                  the rankings for their respective regions. Sadly, we also found that the unhappiest
+                                  regions tended to lie in the Middle East and South America, likely resulting from
+                                  the significant poverty and war on terrorism these regions deal with, as these regions
+                                  on average contained significantly lower Health Life Expectancy scores and Freedom
+                                  scores as well."),
+                                           p("It was important to note that there were specific factors that carried these
+                                  specific regions' happiness scores than others. For example, in North America
+                                  factors such as Generosity and EconomyGDP per Capita for the US and Canada 
+                                  were on average higher than countries from other Regions like Asia, South America
+                                  and Africa which could be due in part to the specific culture and economic
+                                  standing entailed with these regions as opposed to others with a possibly smaller
+                                  product markets to support them."),
+                                           p("Lastly, it is crucial in understanding the data to recognize the amount of countries
+                                  residing in each specific region. Some regions such as North America and Australia  
+                                  contain a significantly less amount of countries and with that poll data, 
+                                  and so drastically different numbers for these regions would tip them above or lower
+                                  than more populated regions. It was also interesting to see the regional distribution
+                                  of data that pertained to regional happiness, with some regions having lower numbers
+                                  all around for certain factors such as Trust in Government or Life Expectancy"
+                                           )
+                                )
+                              ))),                   
+                              # Tab 3
+                              tabPanel("Happiness Over Time",
+                                       shinyServer(
+                                         pageWithSidebar(
+                                           headerPanel("Global Happiness Heatmap"),
+                                           sidebarPanel(
+                                             selectInput("Year", "Please Select a Year",
+                                                         choices = c("2015", "2016", "2017")),
+                                             htmlOutput("heatmapText")
+                                           ),
+                                           mainPanel(
+                                             plotOutput("myHeatmap"),
+                                             h3("What We Learned"),
+                                             p("By plotting the happiness scores of over 150 countries over the span
                                     of three years, 2015-2017, we were able to quickly visualize patterns
                                     that appeared in the data. Almost immediately, it became apparent that
                                     the happiest nations tended to reside in North America and Western Europe,
@@ -132,15 +133,15 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                                     scatterplots, as countries in North America and Western Europe tend to 
                                     have much higher GDP per capita and Life Expectancies then their African
                                     and Southeast Asian counterparts."),
-                                  p("While we were only working with a 3-year sample size, we were still
+                                             p("While we were only working with a 3-year sample size, we were still
                                     surprised by the lack of change in happiness scores over time. Looking
                                     at the different heatmaps, it can be difficult to notice change on a year-
                                     to-year basis, which we attributed to the fact that societies rarely
                                     experience large shifts in collective happiness without a 'trigger' of some
                                     sort. One interesting fact we discovered is that after the controversial
                                     election of President Trump in 2016, the United States' happiness score fell",
-                                    strong("below"), "7.00 for the first time in the three year span we measured."),
-                                  p("A final takeaway when looking at happiness scores over time: pay attention to
+                                               strong("below"), "7.00 for the first time in the three year span we measured."),
+                                             p("A final takeaway when looking at happiness scores over time: pay attention to
                                     the Scandinavian countries. Denmark, Switzerland, Iceland, and Norway all
                                     ranked in the top 5 for overall happiness in every year we measured. Finland was
                                     also ranked in the top 5 in two of the three years we measured. In fact, the only
@@ -151,29 +152,29 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                                     were ranked all three years. Syria's place can most likely be attributed to the
                                     ongoing civil war currently afflicting the nation, while Burundi is widely
                                     considered unsafe due a rise in terrorism and violent crime.")
-                                )
-                              )
-                            )
-                   ),
-                   
-                   # Tab 4
-                   tabPanel("Top Ten Map",
-                            shinyServer(
-                              pageWithSidebar(
-                                headerPanel("Top Ten"),
-                                sidebarPanel(
-                                  selectInput("t4_year",
-                                              label = h3("Select Year"),
-                                              choices = year_list,
-                                              selected = "2017"
-                                  ),
-                                  selectInput("t4_category",
-                                              label = h3("Select Category"),
-                                              choices = category_list("2017"),
-                                              selected = "")),
-                                mainPanel(leafletOutput("map"),
-                                          h3("Analysis"),
-                                          p("Applying the categorical observation of each country into
+                                           )
+                                         )
+                                       )
+                              ),
+                              
+                              # Tab 4
+                              tabPanel("Top Ten Map",
+                                       shinyServer(
+                                         pageWithSidebar(
+                                           headerPanel("Top Ten"),
+                                           sidebarPanel(
+                                             selectInput("t4_year",
+                                                         label = h3("Select Year"),
+                                                         choices = year_list,
+                                                         selected = "2017"
+                                             ),
+                                             selectInput("t4_category",
+                                                         label = h3("Select Category"),
+                                                         choices = category_list("2017"),
+                                                         selected = "")),
+                                           mainPanel(leafletOutput("map"),
+                                                     h3("Analysis"),
+                                                     p("Applying the categorical observation of each country into
                                             a geographical map, gave a sense of the strength of each 
                                             attribute dependent upon the area. In 2017, the attribute 
                                             generosity for example, was predominantly found within Asian 
@@ -184,14 +185,14 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                                             countries with the attribute freedom. These type of observation
                                             helps find trends that corelate between the attribute and its 
                                             geographic location. "),
-                                          p("One of the biggest observations we recorded, was that most countries
+                                                     p("One of the biggest observations we recorded, was that most countries
                                             that are ranked top in happiness was found within the Europe.
                                             When observing GDP, the Middle East had a strong presence within the
                                             top ten ranks. These types of observation are fascinating as we were
                                             able to discover a country such as the United Arab Emirates (UAE), to 
                                             find GDP a strong factor in happiness. Understandable as the UAE holds 
                                             the second largest GDP in the Arab countries."),
-                                          p("When we compare results in factors of years, it becomes difficult 
+                                                     p("When we compare results in factors of years, it becomes difficult 
                                             to see any changes between time. Although we only observed through
                                             a span of three year, there was little to no change in the geographical
                                             movement of each category. We do however noticed pockets of countries.
@@ -199,20 +200,18 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                                             the countries remained within Central America. These 'pockets' of countries
                                             are found easily throughout all the categories, and it becomes surprising that
                                             they tend to remain within their designated area. "))
+                                         )
+                                       )
+                              ),
+                              tabPanel("Learn More",
+                                       shinyServer(
+                                         fluidPage(
+                                           headerPanel("Learn More"),
+                                           mainPanel("View our Technical Report Here:", 
+                                                     a("Link to Wiki"),
+                                                     href = "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project")
+                                           #uiOutput("wikiLink")
+                                         )
+                                       )
                               )
-                            )
-                   ),
-                   tabPanel("Learn More",
-                            shinyServer(
-                              fluidPage(
-                                headerPanel("Learn More"),
-                                mainPanel("View our Technical Report Here:", 
-                                          a("Link to Wiki"),
-                                          href = "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project")
-                                #uiOutput("wikiLink")
-                              )
-                            )
-                   )
-))
-
-
+                            ))

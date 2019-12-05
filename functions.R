@@ -222,8 +222,31 @@ add_regions <- function(mydata) {
     select(-long, -lat, -order, -subregion, -group)
   region_data <- distinct(region_data)
   return(region_data)
-}
-
-
+} 
+  
+  desired_columns2 <- data_2017 %>%
+    select(CapitaGDP, Family, LifeExpectancy, Freedom, Generosity, Government) 
+  desired_columns2 <- colnames(desired_columns2)
+  final <- data_2017
+  
+  # Get the columns and rename them
+  desired <- data_2016_4 %>%
+    select(Region, Economy..GDP.per.Capita., Family, Health..Life.Expectancy.,
+           Freedom, Generosity, Trust..Government.Corruption., Happiness.Score) %>%
+    rename(CapitaGDP = Economy..GDP.per.Capita., LifeExpectancy = Health..Life.Expectancy.,
+           Government = Trust..Government.Corruption.)
+  region <- unique(desired[[1]])
+  
+  
+  
+  two_down <- function(choice, place){
+    df <- desired %>%
+      filter(Region == place) %>%
+      select(choice, Happiness.Score) 
+    return(df)
+  }
+  
+  
+  
 
 

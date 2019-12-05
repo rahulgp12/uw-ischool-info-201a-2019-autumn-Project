@@ -15,6 +15,14 @@ source("functions.R")
 
 shinyServer(
   function(input, output, session) {
+    #Scatter plot for second tab, happiness vs features regionally
+    output$regionalPlot <- renderPlot({
+      df <- two_down(input$Feature_2, input$region_list)
+      ggplot(df, aes(df[[1]], Happiness.Score)) +
+        geom_point()+ xlab(input$Feature_2) + ylab("Happiness Score")+
+        
+        ggtitle("Comparing Societal Variable to Happiness in ", input$region_list)
+    })
     
     # Scatter plot for first tab, happiness vs feature
     output$myPlot <- renderPlot({
@@ -22,24 +30,10 @@ shinyServer(
       feature_type_data <- as.numeric(unlist(feature_type))
       
       linear_fit_2017 <- lm(data_2017$Happiness.Score ~ feature_type_data,
-                        data = data_2017)
+                            data = data_2017)
       linear_plot <- ggplotRegression(linear_fit_2017, input$Feature)
       linear_plot
     })
-    
-    #Scatterplot for second tab, happiness vs feature by region
-    # output$regionalPlot <- renderPlot({
-    #   feature_type <- data_2017 %>% select(input$Feature)
-    #   feature_type_data <- as.numeric(unlist(feature_type))
-    #   
-    #   linear_fit_2017 <- lm(data_2017$Happiness.Score ~ feature_type_data,
-    #                         data = data_2017)
-    #   linear_plot <- ggplotRegression(linear_fit_2017, input$Feature)
-    #   linear_plot
-    #})
-    
-    
-    
     
     
     
@@ -121,14 +115,13 @@ shinyServer(
         )
     })
   }
-
-# this code is bugged but will be used in the future  
-#  function(input, output, session) {
-#    wikiURL <- a("Link to Wiki", href = 
-#                "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project/wiki/Technical-Report")
-#    output$wikiLink <- renderUI({
-#      tagList("Read our Technical Report Here:", wikiURL)
-#    })
-#  }
+  
+  # this code is bugged but will be used in the future  
+  #  function(input, output, session) {
+  #    wikiURL <- a("Link to Wiki", href = 
+  #                "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project/wiki/Technical-Report")
+  #    output$wikiLink <- renderUI({
+  #      tagList("Read our Technical Report Here:", wikiURL)
+  #    })
+  #  }
 )
-
