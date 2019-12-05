@@ -232,14 +232,80 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                                          )
                                        )
                               ),
-                              tabPanel("Learn More",
+                              tabPanel("About",
                                        shinyServer(
                                          fluidPage(
-                                           headerPanel("Learn More"),
-                                           mainPanel("View our Technical Report Here:", 
+                                           h2("About Us"),
+                                           h3("Pasit Areepipatkul"),
+                                           p("I am a 2nd year student at the University of Washington, intended to study 
+                                             Informatics and Computer Science. With this group project in my INFO-201 class 
+                                             on data science, I was excited to propose the idea of working on a dataset that 
+                                             focuses on the trends of world happiness. As soon as we were all on board, we 
+                                             utilized the R-language skills we learned from class to successfully build a web
+                                             application that analyzes the data derived from the World Happiness Report. With 
+                                             this project, I got to work in a small team environment and used tools such as Git, 
+                                             something I was previously acquaintanced with during my software engineer internship 
+                                             during the summer. Therefore, I tried to transition these coding skills over for the 
+                                             benefit of the team and assisted them with any tasks that came up."),
+                                           p("I was responsible for the first tab in our application, where I tried using linear 
+                                             regression and the coefficient of determination to find the strongest correlation 
+                                             between happiness and one of the six features (GDP, freedom, life expectancy, etc). 
+                                             What I found was quite remarkable - how insignificant the correlation is between 
+                                             generosity and happiness scores. Despite the reasoning behind this, it is quite 
+                                             difficult to see that generosity had the lowest correlation out of all the features. 
+                                             Born and raised in Bangkok, Thailand - I was often taught that giving was an essential
+                                             component to life, and how fulfilled you can feel inside when you share something with
+                                             others (however, I’m still proud that Thailand ranks as one of the top countries for 
+                                             generosity in this data set)."),
+                                           p("I believe this is the beauty of Informatics, where I can combine my own passion of 
+                                             technology with the humanities side to see the current failures of society, and hope to 
+                                             study how I can optimize future technologies to ethically-impact society for the better."),
+                                           h3("Welson Nguyen"),
+                                           p("I am currently a student at the University of Washington as a junior. My intended major 
+                                             of study is Informatics and Computer Science with a focus in cyber security. This project 
+                                             is a work done under the INFO-201 course. Here we use the R-studio language to wrangle and 
+                                             analyze sets of data in a collaborative environment that encapsulates the use of technology 
+                                             in information analyzation. This specific project code named Utopia, contains my efforts in 
+                                             coding collaboratively with others, analyzing data provided by the United Nations World 
+                                             Happiness Report. Using Git, GitHub, R-studio, Excel, and critical thinking skills, our 
+                                             team sought after trends found within the provided data. My role besides coding was to help 
+                                             in areas the team required assistance. From analyzing data, backup coder, or general hand, 
+                                             I took the responsibility to support my team in any way I am able to make our team successful. 
+                                             As tasks are divided between members, mine being the “Top Ten Map” tab,  there was always work 
+                                             that needed an extra support outside of my own responsibility."),
+                                           h3("Rahul Prasad"),
+                                           p("I am currently a junior at the University of Washington, intending to pursue a double major
+                                             in Economics and Informatics. I have always been a proponent of living a life that keeps you
+                                             both challenged and fulfilled, and so the opportunity to analyze happiness trends was an 
+                                             experience I am truly grateful for. I was responsible for developing the code that created
+                                             a happiness heatmap, which displayed global happiness scores for each country from 2015-2017.
+                                             I used ggplot2 and dplyr packages in order to organize the data and create the visualization.
+                                             When I am not wrangling data, I am either acting as the Co-President for TEDxUofW, the offical UW 
+                                             TEDx Talks organization on campus, working for the Seattle Seahawks as a Street Team Member,
+                                             or creating hip-hop music!"),
+                                           h3("Geoffrey Cabatingan"),
+                                           p("Greetings! My name is Geoffrey Cabatingan and I’m currently a second year student at the 
+                                             University of Washington majoring in Geographic Information Systems double minoring in DXArts 
+                                             (Digital Arts & Experimental Media) and Informatics. In terms of tech, I’m passionate about 
+                                             improving overall efficiency and usability through providing context for and interpreting data. 
+                                             Doing this project titled the “Global Happiness Report” has been a great exposure to using and 
+                                             collaborating on Github: one of the most used professional programs for collaboration to this day. 
+                                             Here, we were able to employ the R computer language to create statistical and spatial 
+                                             visualizations of countries’ “happiness” rankings and scores based on many societal factors that 
+                                             we analyzed from our 2015-2017 datasets."),
+                                           p("We split the work up in this project by each doing our own visualizations, as we felt it would 
+                                             be more convincing for results to implement all types of different graphs/maps to give a more 
+                                             genuine and whole answer of what made people happy. In this project, I focused on the statistical 
+                                             visual of regional happiness, creating an interactive scatterplot which allows users to identify 
+                                             one of the six specific societal variables to compare with the countries’ happiness score. It was 
+                                             interesting to see how regions ranked in terms of happiness, with North America and Western Europe 
+                                             being on average higher than other regions. Studying Geography as well, I'm very pleased to have
+                                             had the opportunity to combine both of my passions to create a positive and interactive report 
+                                             for you all!"),
+                                           h2("Learn More"),
+                                           p("View our Technical Report Here:", 
                                                      a("Link to Wiki"),
                                                      href = "https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project")
-                                           #uiOutput("wikiLink")
                                          )
                                        )
                               )
