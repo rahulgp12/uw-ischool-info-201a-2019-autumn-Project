@@ -232,6 +232,38 @@ shinyUI(navbarPage(title = "Global Happiness Report",
                                          )
                                        )
                               ),
+                              tabPanel("Conclusion",
+                                fluidPage(
+                                  h2("Conclusion"),
+                                  p("One of the biggest strengths of the project was our ability to analyze and interpret 
+                                  the data given. The ability to think critically play a huge role in using the data in a 
+                                  way that was meaningful and encouraging to further development. For example, we were able 
+                                  to understand what elements of the data set would be of importance to tackling our research 
+                                  questions. Questions such as “What factors are most tied with a region’s happiness?” or “Which 
+                                  region has been less happy over the course of the 3 year period and why?”, were quickly brought 
+                                  up within our team meetings and answered with the statistical tools we implemented."),
+                                  p("However, since that data is at such a high-level observation it cannot be analyzed down and 
+                                  implemented to an individual instead only at best the regional level. This leads into future work
+                                  that has the potential to find trends and patterns personalized towards the individual. A weakness 
+                                  of the project might be the decision to use the data set from the UN World’s Happiness Report, a 
+                                  data set that is based off of a survey which is extremely broad and doesn’t enable us to find causes
+                                  to global problems."),
+                                  p("Some of the lessons we have learned over the course of the time spent with our group is how 
+                                  important it is to be able to communicate directly with each other. We’ve overcame the initial challenge 
+                                  of fairly assigning tasks to each member, but another challenge also came up. The collaboration platform
+                                  that we used was GitHub, which most team members had just learned over the course of taking this course. 
+                                  Apart from the data wrangling techniques, learning how to both communicate with each other and how to use 
+                                  Git effectively was quite difficult. Although we initially struggled, we had everything under control by the 
+                                  end of the project as we slowly built our understanding of the platform together. As the key collaboration 
+                                  platform in the tech industry, these lessons will be put to good use in the future."),
+                                  p("Since we all have an interest in Informatics, the work we’ve done over the past quarter will still be 
+                                    extremely relevant to our intended area of study. The future work of the members on our team will most 
+                                    likely tackle similar problems with massive data sets, and whether it would be for financial, security or 
+                                    ethical reasons, we feel more prepared for the work in the respective industries. Overall, we are proud of 
+                                    what we have done for this project and we will use the lessons and skills learned as a base for our 
+                                    professional careers."),
+                                )
+                              ),
                               tabPanel("About",
                                        shinyServer(
                                          fluidPage(
