@@ -22,7 +22,36 @@ desired_columns <- data_2017 %>%
 # Shiny UI
 shinyUI(navbarPage(title = "Global Happiness Report",
                    theme = shinytheme("darkly"),
-                   
+                   # Intro Tab
+                   tabPanel("Introduction",
+                   fluidPage(
+                     h2("Introduction"),
+                     p("Happiness is one of the hardest amenities on the planet to quantify. Money can't buy
+                       it. Goods cannot be bartered for it. It cannot be grown or mined like a natural resource.
+                       It simply exists. The purpose of this analysis is to identify where in the world happiness
+                       is most plentiful, and what, if any, factors can be correlated to its existence. Our goal
+                       is for our visualizations to point out underlying patterns that accompany happiness, with
+                       the hope that individuals can use the information in their decision-making in order to
+                       maximize their personal happiness. In the long-run, our hope is that this will raise 
+                       collective happiness as well, resulting in a positive impact even on individuals who do not
+                       view our analysis."),
+                     p("Happiness is nearly impossible to measure objectively, and varies across individuals,
+                       societies, and nations. This makes it difficult to perform statistical analysis on. Because
+                       of this, our chief problem in working with happiness is finding a way to quantify an
+                       emotional experience. There can be no doubt that finding a way to measure happiness, and its 
+                       influencing factors is of utmost importance to many people, and of great interest to many others.
+                       If we are able to sucessfully identify what correlating factors accompany happiness in different
+                       situations, the findings should be valuable to every global citizen."),
+                     p("In order to complete this task in a way that pays respects to the diversity of the global
+                       population, we must first acknowledge that influential factors on happiness will vary across
+                       geographical and chronological bounds. To account for this, we will utilize a variety of data
+                       visualizations with discrete objectives that represent happiness in the different forms it
+                       appears in. These visualizations will include scatterplots, heatmaps, and dot-distribution maps,
+                       which focus on isolating happiness as it correlates to selected independent factors, regional
+                       bounds, and across multi-year spans. The visualizations will allow individuals to easily view
+                       thousands of pieces of data, and identify patterns existing within.")
+                   )
+                   ),
                    # First tab
                    tabPanel("Global Happiness",
                             shinyServer(
