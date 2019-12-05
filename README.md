@@ -1,6 +1,7 @@
 # What Sparks Joy: Examining the Factors Behind Global Happiness
 
 ### By: Rahul Prasad, Welson Nguyen, Geo Cabatingan, Pow Areepipatkul
+Link to Shiny Application (Part 3 of Project): https://pareepipatkul.shinyapps.io/global-happiness-project/
 
 Link to Project Proposal (Part 1 of Project):
 https://github.com/rahulgp12/uw-ischool-info-201a-2019-autumn-Project/wiki/Project-Proposal
