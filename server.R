@@ -20,6 +20,7 @@ shinyServer(
       df <- two_down(input$Feature_2, input$region_list)
       ggplot(df, aes(df[[1]], Happiness.Score)) +
         geom_point()+ xlab(input$Feature_2) + ylab("Happiness Score")+
+        geom_smooth(method = "lm") +
         
         ggtitle("Comparing Societal Variable to Happiness in ", input$region_list)
     })
